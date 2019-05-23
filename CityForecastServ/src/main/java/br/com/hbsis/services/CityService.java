@@ -32,19 +32,9 @@ public class CityService {
 		return cityRepository.findByName(name);
 	}
 
-	public CityWeatherDTO findWeather(String name) {
 
-		UriComponentsBuilder uriComponentsBuilder = loadUriComponentsBuilder(name);
-
-		RestTemplate restTemplate = new RestTemplate();
-		CityWeatherDTO cityWeatherDTO = restTemplate.getForObject(uriComponentsBuilder.build().toUri(),
-				CityWeatherDTO.class);
-
-		return cityWeatherDTO;
-	}
-
-	private UriComponentsBuilder loadUriComponentsBuilder(String name) {
-		UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(openWeatherURLWeather);
+	private UriComponentsBuilder loadUriComponentsBuilder(String name, String apiUrl) {
+		UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(apiUrl);
 		uriComponentsBuilder.queryParam("apikey", openWeatherApiKey);
 		uriComponentsBuilder.queryParam("q", name);
 		return uriComponentsBuilder;
@@ -60,19 +50,37 @@ public class CityService {
 		return cityRepository.save(city);
 	}
 
+	public CityWeatherDTO findWeather(String name) {
+
+		UriComponentsBuilder uriComponentsBuilder = loadUriComponentsBuilder(name, openWeatherURLWeather);
+
+		RestTemplate restTemplate = new RestTemplate();
+		CityWeatherDTO cityWeatherDTO = restTemplate.getForObject(uriComponentsBuilder.build().toUri(),
+				CityWeatherDTO.class);
+
+		return cityWeatherDTO;
+	}
+	
 	public CityForecastDTO findForecast(String name) {
 
-		UriComponentsBuilder uriComponentsBuilder = loadUriComponentsBuilder(name);
+		UriComponentsBuilder uriComponentsBuilder = loadUriComponentsBuilder(name, openWeatherURLForecast);
 		RestTemplate restTemplate = new RestTemplate();
 
 		CityForecastDTO forecastDTO = restTemplate.getForObject(uriComponentsBuilder.build().toUri(), CityForecastDTO.class); 
 		
 		return forecastDTO;
-
 	}
 
 	public List<City> loadAll() {
 		return cityRepository.findAll();
 	}
 
+	public void delete(Long id) {
+
+		City city = cityRepository.findById(id).get();
+		
+		if(city != null) {
+			cityRepository.delete(city);
+		}
+	}
 }

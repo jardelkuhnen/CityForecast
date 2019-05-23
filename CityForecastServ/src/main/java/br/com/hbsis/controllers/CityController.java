@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.hbsis.dtos.CityForecastDTO;
 import br.com.hbsis.dtos.CityWeatherDTO;
@@ -23,11 +26,11 @@ public class CityController {
 	private CityService cityService;
 
 	@GetMapping("/city")
-	public List<City> findAll() {
-		
+	public ResponseEntity<List<City>> findAll() {
+
 		List<City> allCities = cityService.loadAll();
-		
-		return allCities;
+
+		return ResponseEntity.ok(allCities);
 	}
 
 	@GetMapping("/city/{name}")
@@ -57,13 +60,28 @@ public class CityController {
 
 		return ResponseEntity.ok(city);
 	}
+
+	@DeleteMapping("/city/delete/{id}")
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
+		cityService.delete(id);
+
+		return ResponseEntity.ok().build();
+	}
 	
+	@GetMapping("/city/weather/{name}")
+	public ResponseEntity<CityWeatherDTO> findWeather(@PathVariable(value = "name") String name) {
+
+		CityWeatherDTO cityWeatherDTO = cityService.findWeather(name);
+
+		return ResponseEntity.ok(cityWeatherDTO);
+	}
+
 	@GetMapping("/city/forecast/{name}")
-	public CityForecastDTO findForecast(@PathVariable(value = "name") String name) {
+	public ResponseEntity<CityForecastDTO> findForecast(@PathVariable(value = "name") String name) {
 
 		CityForecastDTO cityForecastDTO = cityService.findForecast(name);
 
-		return cityForecastDTO;
+		return ResponseEntity.ok(cityForecastDTO);
 	}
 
 }

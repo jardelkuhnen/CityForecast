@@ -15,6 +15,6 @@ public class CityForecastDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private City city;
-	private List<TemperatureItem> itensTemperature;
+	private List<TemperatureItem> list;
 	
 }
