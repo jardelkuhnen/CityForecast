@@ -2,16 +2,22 @@
   <button mat-button color="primary" routerLink="/cidades">Voltar</button>
 </div>
 
-
+<!-- 
 <mat-card>
   <mat-card-header>
-      <mat-card-title>{{city.name}}</mat-card-title>
+      <mat-card-title>{{forecast.city.name}}</mat-card-title>
       <mat-card-subtitle>Previsão de 5 Dias</mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content>
+  
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[column.id]}} </mat-cell>
+    </ng-container>
 
-    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
-  </mat-card-content>
-</mat-card>
+</mat-card> -->

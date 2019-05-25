@@ -5,7 +5,7 @@
   <h3 class="header"> Lista de cidades </h3>
   <div *ngFor='let cidade of cidades'>
     <mat-card class="cidade borda-cidade" routerLink="{{cidade.name}}/temperaturas">
-      Nome: {{ cidade.name }}
+      {{ cidade.name }}
     </mat-card>
   </div>
   <!--Voce consegue ter acesso a lista então da pra validar pelo tamanho-->

@@ -13,9 +13,7 @@ export class ListFormComponent implements OnInit{
   cidades: City[];
   
   ngOnInit(): void {
-    this.service.getCities().subscribe(
-      dados => this.cidades = dados) ;
-    console.log(this.cidades);
+    this.service.getCities().subscribe(dados => this.cidades = dados) ;
   }
 
 

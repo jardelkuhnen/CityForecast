@@ -9,6 +9,7 @@ import { CityRouting } from './city-routing.module';
 import { MaterialUIModule } from '../core/material/material-ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CityWeatherComponent } from './city-weather/weather.component';
+import { MatTableModule } from '@angular/material';
 
 
 /**
@@ -22,7 +23,8 @@ import { CityWeatherComponent } from './city-weather/weather.component';
     CommonModule,
     MaterialUIModule,
     CityRouting,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   declarations: [ 
     CityComponent,
