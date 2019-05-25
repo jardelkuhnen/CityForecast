@@ -1,0 +1,18 @@
+.header {
+  font-size: 26px;
+  color: #444;
+  text-align: center;
+}
+
+.valida-cidade {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+@media screen and (min-width: 600px) {
+
+  .header {
+    text-align: left;
+    font-size: 44px;
+  }
+}

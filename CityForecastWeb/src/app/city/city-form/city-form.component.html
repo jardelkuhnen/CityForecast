@@ -1,0 +1,10 @@
+<div class="container">
+  <form [formGroup]='formCidade' fxLayoutAlign='center center'>
+    <div class="form" fxFlex fxLayout='column' fxFlex.gt-sm='50%'>
+      <mat-form-field>
+        <input formControlName='name' matInput placeholder="Nome da cidade">
+      </mat-form-field>
+      <button mat-raised-button color='primary' (click)='save()'>Salvar</button>
+    </div>
+  </form>
+</div>

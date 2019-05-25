@@ -1,0 +1,16 @@
+<mat-toolbar color='primary'>
+  <mat-toolbar-row fxFlex>
+    <span>Cadastro de Cidades API</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<nav mat-tab-nav-bar color='primary'>
+  <a *ngFor='let menu of (menus$ | async)'
+    mat-tab-link
+    routerLinkActive
+    #rla='routerLinkActive'
+    (click)='activeLink = menu.name'
+    [active]= 'rla.isActive'
+    routerLink='{{menu.path}}'
+  > {{menu.name}}</a>
+</nav>
+
