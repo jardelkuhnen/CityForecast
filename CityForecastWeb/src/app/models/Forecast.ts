@@ -3,5 +3,5 @@ import { TemperatureItem } from './TemperatureItem';
 
 export class Forecast {
     public city: City;
-    public list: TemperatureItem[];
+    public list: any[];
 }

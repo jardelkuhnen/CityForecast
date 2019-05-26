@@ -9,12 +9,12 @@ export class CityService {
 
   constructor(private http: HttpClient) { }
 
-  addCity(name: string) {
-    return this.http.post(Config.SERVICE_CITY_SAVE + name, name).subscribe(r=>{});
+  addCity(name: string): Observable<City> {
+    return this.http.post<City>(Config.SERVICE_CITY_SAVE + name, name);
   }
 
   
-  getCities(){
+  getCities(): Observable<City[]>{
     return this.http.get<City[]>(Config.SERVICE_CITY_GET_ALL);
   }
 }

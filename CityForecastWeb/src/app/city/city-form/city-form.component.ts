@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CityService } from 'src/app/services/city.service';
 import { City } from 'src/app/models/City';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-city-form',
@@ -23,7 +24,8 @@ export class CityFormComponent implements OnInit {
    */
   constructor(
     private form: FormBuilder,
-    private cityService: CityService) { }
+    private cityService: CityService,
+    private messages: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -38,8 +40,11 @@ export class CityFormComponent implements OnInit {
 
   save() {
     this.cidadeName = this.formCidade.value.name;
+    this.cityService.addCity(this.cidadeName).subscribe(r=> {}, error => this.showError('Cidade não localizada!'));
+  }
 
-    this.cityService.addCity(this.cidadeName);
+  showError(message: string) {
+    setTimeout(() => this.messages.open(message, 'Close', { duration: 4000 }), 1);
   }
 
 }

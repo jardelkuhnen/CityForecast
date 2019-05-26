@@ -10,16 +10,15 @@ import { Observable } from 'rxjs';
 })
 export class ListFormComponent implements OnInit{
   
+  constructor(private service: CityService) { }
+
   cidades: City[];
   
   ngOnInit(): void {
-    this.service.getCities().subscribe(dados => this.cidades = dados) ;
+    this.loadCities();
   }
 
-
-  /**
-   * Dados que vem da api.
-   * Criar servico que comunica com api, usar HttpClient.
-   */
-  constructor(private service: CityService) { }
+  private loadCities() {
+    this.service.getCities().subscribe(dados => this.cidades = dados);
+  }
 }
