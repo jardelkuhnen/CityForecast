@@ -3,7 +3,6 @@ import { WeatherService } from './../../services/weather.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Forecast } from 'src/app/models/Forecast';
-import { TemperatureItem } from 'src/app/models/TemperatureItem';
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatSort, MatTableDataSource, MatSnackBar } from '@angular/material';
 
