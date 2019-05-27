@@ -1,5 +1,5 @@
 <div class="container">
-  <app-city-form></app-city-form>
+  <app-city-form (updateList)="updateList($event)"></app-city-form>
 </div>
 <div class="container lista-cidades" fxLayout='column' fxLayoutGap='8px'>
   <h3 class="header"> Lista de cidades </h3>

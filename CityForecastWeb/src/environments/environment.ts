@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  SERVICE_CITY_GET_ALL: "http://localhost:8080/api/city",
+
+	SERVICE_CITY_SAVE: "http://localhost:8080/api/city/save/",
+
+	SERVICE_CITY_FORECAST: "http://localhost:8080/api/city/forecast/"
 };
 
 /*

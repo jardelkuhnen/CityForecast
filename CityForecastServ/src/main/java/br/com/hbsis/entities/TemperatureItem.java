@@ -12,7 +12,8 @@ public class TemperatureItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Date dt;
+	private Long dt;
+	private Date date;
 	private Temperature main;
 	
 	

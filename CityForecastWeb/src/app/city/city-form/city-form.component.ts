@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CityService } from 'src/app/services/city.service';
 import { City } from 'src/app/models/City';
@@ -14,14 +14,11 @@ export class CityFormComponent implements OnInit {
    * Representa seu formulario e os dados contidos nele.
    */
   formCidade: FormGroup;
-  cidadeName: string = '';
-  cidades: City[] = [];
   city: City;
+  cidades: City[] = [];
 
-  /**
-   * Builder que constroi o formulario, e tipo o string builder do java.
-   * @param form o teu formulario de cidade
-   */
+  @Output() updateList = new EventEmitter();
+
   constructor(
     private form: FormBuilder,
     private cityService: CityService,
@@ -39,8 +36,11 @@ export class CityFormComponent implements OnInit {
   }
 
   save() {
-    this.cidadeName = this.formCidade.value.name;
-    this.cityService.addCity(this.cidadeName).subscribe(r=> {}, error => this.showError('Cidade não localizada!'));
+    this.city = this.formCidade.value;
+    this.cityService.addCity(this.city.name).subscribe(r=> {
+      this.updateList.emit(this.city);
+    }, error => this.showError('Cidade não localizada!'));
+
   }
 
   showError(message: string) {

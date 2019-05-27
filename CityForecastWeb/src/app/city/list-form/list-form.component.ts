@@ -9,16 +9,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-form.component.css']
 })
 export class ListFormComponent implements OnInit{
-  
+
   constructor(private service: CityService) { }
 
   cidades: City[];
-  
+
   ngOnInit(): void {
     this.loadCities();
   }
 
   private loadCities() {
     this.service.getCities().subscribe(dados => this.cidades = dados);
+  }
+
+  updateList(city){
+    this.cidades.push(city);
   }
 }

@@ -1,5 +1,7 @@
 package br.com.hbsis.services;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.hbsis.dtos.CityForecastDTO;
 import br.com.hbsis.dtos.CityWeatherDTO;
 import br.com.hbsis.entities.City;
+import br.com.hbsis.entities.TemperatureItem;
 import br.com.hbsis.repositories.CityRepository;
 
 @Service
@@ -67,9 +70,19 @@ public class CityService {
 		RestTemplate restTemplate = new RestTemplate();
 
 		CityForecastDTO forecastDTO = restTemplate.getForObject(uriComponentsBuilder.build().toUri(), CityForecastDTO.class); 
+
+		convertUnixToDate(forecastDTO.getList());
 		
 		return forecastDTO;
 	}
+
+	private void convertUnixToDate(List<TemperatureItem> list) {
+		for (TemperatureItem item : list) {
+			Date date = Date.from(Instant.ofEpochSecond(item.getDt()));
+			item.setDate(date);
+		}
+	}
+
 
 	public List<City> loadAll() {
 		return cityRepository.findAll();
