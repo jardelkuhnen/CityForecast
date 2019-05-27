@@ -20,7 +20,8 @@ Acessar a pasta CityForecastWeb e executar o comando npm install para baixar tod
 Executar ´ng serve´ para executar a aplicação client;
 
 A base de dados utilizar é o H2.
-Os dados podem ser consultados através da url: http://localhost:8080/h2-console/login.jsp
+Os dados podem ser consultados através da url: 
+http://localhost:8080/h2-console/login.jsp
 Utilizar as configurações do arquivo application.properties do servidor para acessar a base de dados.
   
  ## Testes da Api
