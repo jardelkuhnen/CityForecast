@@ -12,11 +12,11 @@ Projeto API para cadsatro e visualização de temperatura de cidades utilizando 
 ## Execução do projeto
 
 Servidor:
-Acessar a pasta CityForecastServ executar o comando:  ´´mvn spring-boot:run´´
+Acessar a pasta CityForecastServ executar o comando:  mvn spring-boot:run
 ou importar o projeto em uma ide como STS (https://spring.io/tools) e executar a aplicação.
 
 Cliente:
-Acessar a pasta CityForecastWeb e executar o comando ´npm install´ para baixar todas as dependências.
+Acessar a pasta CityForecastWeb e executar o comando npm install para baixar todas as dependências.
 Executar ´ng serve´ para executar a aplicação client;
 
 A base de dados utilizar é o H2.
