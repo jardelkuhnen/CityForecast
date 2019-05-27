@@ -1,12 +1,12 @@
 # CityForecast
 
-Projeto API para cadsatro e visualização de temperatura de cidades utilizando a api openweathermap
+Projeto API para cadastro e visualização de temperatura de cidades utilizando a api openweathermap
 
 ## Tecnologias
 
- - Java
- - Angular
- - Spring Boot 
+ - Java 1.8
+ - Angular 7.3.9
+ - Spring Boot 2.1.4
  - H2 Database
 
 ## Execução do projeto
@@ -29,6 +29,6 @@ Utilizar as configurações do arquivo application.properties do servidor para a
  Executar tanto servidor como cliente e acessar o endereço localhost:4200 onde será exibido a tela para cadastro de cidades.
  
  - Somente serão cadastradas cidades existentes na api openweathermap.
- - Ao clicar sobre uma cidade cadsatrada será exibida tela com a previsão de 5 dias de cada cidade.
+ - Ao clicar sobre uma cidade cadastrada será exibida tela com a previsão de 5 dias de cada cidade.
  
  
