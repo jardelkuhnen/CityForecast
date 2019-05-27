@@ -83,17 +83,8 @@ public class CityService {
 		}
 	}
 
-
 	public List<City> loadAll() {
 		return cityRepository.findAll();
 	}
 
-	public void delete(Long id) {
-
-		City city = cityRepository.findById(id).get();
-		
-		if(city != null) {
-			cityRepository.delete(city);
-		}
-	}
 }

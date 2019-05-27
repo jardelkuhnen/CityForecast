@@ -60,21 +60,7 @@ public class CityController {
 		return ResponseEntity.ok(city);
 	}
 
-	@DeleteMapping("/city/delete/{id}")
-	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
-		cityService.delete(id);
-
-		return ResponseEntity.ok().build();
-	}
 	
-	@GetMapping("/city/weather/{name}")
-	public ResponseEntity<CityWeatherDTO> findWeather(@PathVariable(value = "name") String name) {
-
-		CityWeatherDTO cityWeatherDTO = cityService.findWeather(name);
-
-		return ResponseEntity.ok(cityWeatherDTO);
-	}
-
 	@GetMapping("/city/forecast/{name}")
 	public ResponseEntity<CityForecastDTO> findForecast(@PathVariable(value = "name") String name) {
 
