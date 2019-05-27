@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
 
 import br.com.hbsis.dtos.CityForecastDTO;
 import br.com.hbsis.dtos.CityWeatherDTO;
@@ -45,15 +46,17 @@ public class CityController {
 	}
 
 	@PostMapping("/city/save/{name}")
-	public ResponseEntity<City> save(@PathVariable(value = "name") String name) {
+	public ResponseEntity<?> save(@PathVariable(value = "name") String name) {
 
 		if (cityService.loadByName(name) != null)
 			return null;
 
-		CityWeatherDTO cityWeatherDTO = cityService.findWeather(name);
-
-		if (cityWeatherDTO == null)
-			return null;
+		CityWeatherDTO cityWeatherDTO = null;
+		try {
+			cityWeatherDTO = cityService.findWeather(name);
+		} catch (HttpClientErrorException e) {
+			return ResponseEntity.badRequest().body("Cidade não localizada");
+		}
 
 		City city = cityService.save(cityWeatherDTO);
 
