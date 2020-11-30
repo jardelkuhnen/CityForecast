@@ -38,7 +38,7 @@ public class CityController {
 
 		City city = cityService.loadByName(name);
 
-		if (city != null) {
+		if (city == null) {
 			return null;
 		}
 
