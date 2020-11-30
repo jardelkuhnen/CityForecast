@@ -1,0 +1,6 @@
+[
+	"gauge",
+	"run",
+	"--dir=C:\\pessoal\\CityForecast\\CityForecastServ",
+	"C:\\pessoal\\CityForecast\\CityForecastServ\\specs"
+]
