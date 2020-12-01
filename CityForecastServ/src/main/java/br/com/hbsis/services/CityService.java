@@ -58,8 +58,7 @@ public class CityService {
 		UriComponentsBuilder uriComponentsBuilder = loadUriComponentsBuilder(name, openWeatherURLWeather);
 
 		RestTemplate restTemplate = new RestTemplate();
-		CityWeatherDTO cityWeatherDTO = restTemplate.getForObject(uriComponentsBuilder.build().toUri(),
-				CityWeatherDTO.class);
+		CityWeatherDTO cityWeatherDTO = restTemplate.getForObject(uriComponentsBuilder.build().toUri(), CityWeatherDTO.class);
 
 		return cityWeatherDTO;
 	}
