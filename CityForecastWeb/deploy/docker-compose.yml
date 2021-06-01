@@ -1,0 +1,10 @@
+---
+services:
+  portal-web:
+    image: jardelkuhnen/forecast-web:latest
+    hostname: forecast-web
+    container_name: forecast-web
+    ports:
+      - "80:80"
+    expose:
+      - 80
