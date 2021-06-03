@@ -13,7 +13,6 @@ public class WebConfiguration {
 
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-
 		return builder.build();
 	}
 

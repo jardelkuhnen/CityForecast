@@ -1,0 +1,18 @@
+services:
+  forecast-app:
+    image: jardelkuhnen/forecast-app:latest
+    hostname: forecast-app
+    container_name: forecast-app
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+
+  forecast-web:
+    image: jardelkuhnen/forecast-web:latest
+    hostname: forecast-web
+    container_name: forecast-web
+    ports:
+      - "80:80"
+    expose:
+      - 80
