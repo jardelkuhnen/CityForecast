@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: in-forecast
+  namespace: forecast
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels:
+    name: forecast-app
+    name: forecast-web
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /(|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: forecast-web
+            port:
+              number: 80
+      - path: /app(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: forecast-app
+            port:
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: in-forecast-static
+  namespace: forecast
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /static/$2
+  labels:
+    name: forecast-app
+    name: forecast-web
+spec:
+  rules:
+  - http:
+      paths:
+      - path:
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: forecast-web
+            port: 
+              number: 80
+        path: /static(/|$)(.*)

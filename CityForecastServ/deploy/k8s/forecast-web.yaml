@@ -1,0 +1,44 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forecast-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forecast-web
+  template:
+    metadata:
+      labels:
+        app: forecast-web
+    spec:
+      hostname: forecast-web
+      containers:
+      - name: forecast-web
+        image: jardelkuhnen/forecast-web:latest
+        resources:
+          requests:
+              cpu: 100m
+              memory: 100Mi
+          limits:
+            memory: 128Mi
+            cpu: 120m
+        ports:
+        - containerPort: 80
+          name: http
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: forecast-web
+spec:
+  type: ClusterIP
+  selector:
+    app: forecast-web
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80

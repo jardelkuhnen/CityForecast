@@ -7,6 +7,14 @@ services:
       - "8080:8080"
     expose:
       - 8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:hbsisForecast
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=
+      - app.openweather.url.weather=https://api.openweathermap.org/data/2.5/weather
+      - app.openweather.url.forecast=https://api.openweathermap.org/data/2.5/forecast
+      - app.openweather.apikey=eb8b1a9405e659b2ffc78f0a520b1a46
 
   forecast-web:
     image: jardelkuhnen/forecast-web:latest

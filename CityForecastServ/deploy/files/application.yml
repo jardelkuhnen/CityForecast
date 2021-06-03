@@ -6,12 +6,12 @@ logging.config: file:./logback-spring.xml
 logging.path: ./logs
 logging.file: ${logging.path}/app.log
 
-spring.profiles.active: dev
+#spring.profiles.active: dev
 
 spring.jmx.enabled: false
-spring.datasource.url: jdbc:h2:mem:hbsisForecast
-spring.datasource.username: sa
-spring.datasource.password:
+#spring.datasource.url: jdbc:h2:mem:hbsisForecast
+#spring.datasource.username: sa
+#spring.datasource.password:
 spring.datasource.driver-class-name: org.h2.Driver
 spring.datasource.test-on-borrow: true
 
@@ -20,7 +20,7 @@ spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
 management.context-path: mgmt
 
 # Weather Information
-app.openweather.url.weather: http://api.openweathermap.org/data/2.5/weather
-app.openweather.url.forecast: http://api.openweathermap.org/data/2.5/forecast
+#app.openweather.url.weather: http://api.openweathermap.org/data/2.5/weather
+#app.openweather.url.forecast: http://api.openweathermap.org/data/2.5/forecast
 
-app.openweather.apikey: eb8b1a9405e659b2ffc78f0a520b1a46
+#app.openweather.apikey: eb8b1a9405e659b2ffc78f0a520b1a46
